@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.Usuario;
+import controller.LoginController;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -235,12 +239,13 @@ public class Login extends JFrame {
 	}
 	
 	private void Login() {
-		 String Usuario= "admin";
-	     String Contraseña="admin";
+		 //String Usuario= "admin";
+	    //String Contraseña="admin";
+		    String usuario = txtUsuario.getText(); 
+	        String clave =new String (txtContrasena.getPassword());
+	        LoginController loginController = new LoginController();
 
-	        String contrase=new String (txtContrasena.getPassword());
-
-	        if(txtUsuario.getText().equals(Usuario) && contrase.equals(Contraseña)){
+	        if(loginController.validar(new Usuario(usuario, clave))){
 	            MenuUsuario menu = new MenuUsuario();
 	            menu.setVisible(true);
 	            dispose();	 
